@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "447030487867",
+    "project_id": "theloop-470aa",
+    "storage_bucket": "theloop-470aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447030487867:android:8eaf06c35ca812a8d0a51e",
+        "android_client_info": {
+          "package_name": "edu.neu.madcourse.theloop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "447030487867-n7ptf722cm1akrafftso81jj4kmv8sas.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnCTEFHuKDVLCCZfiITA9Qoi4XBNJd6_U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "447030487867-n7ptf722cm1akrafftso81jj4kmv8sas.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
