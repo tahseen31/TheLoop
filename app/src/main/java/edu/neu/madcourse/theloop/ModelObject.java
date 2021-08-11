@@ -22,4 +22,6 @@ public enum ModelObject {
     public int getmLayoutResId() {
         return mLayoutResId;
     }
+
+
 }

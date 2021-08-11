@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheLoop">
-        <activity android:name=".GetStartedScrollActivity"></activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".RegisterUser" />
+        <activity android:name=".GetStartedScrollActivity" />
         <activity android:name=".MainLoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

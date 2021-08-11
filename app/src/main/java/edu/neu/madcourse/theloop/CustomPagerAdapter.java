@@ -1,17 +1,22 @@
 package edu.neu.madcourse.theloop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.ColorSpace;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 
 public class CustomPagerAdapter extends PagerAdapter {
     private Context mContext;
+    private Button registerBtn;
+
 
     public CustomPagerAdapter(Context mContext){
         this.mContext = mContext;
@@ -22,6 +27,7 @@ public class CustomPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(@NonNull  ViewGroup container, int position) {
+
         ModelObject modelObject = ModelObject.values()[position];
         LayoutInflater inflater = LayoutInflater.from(mContext);
 
@@ -53,6 +59,7 @@ public class CustomPagerAdapter extends PagerAdapter {
     public int getCount() {
         return ModelObject.values().length;
     }
+
 
 
 }
