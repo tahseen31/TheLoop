@@ -30,6 +30,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+repositories {
+    maven { url "https://jitpack.io" }
+}
 
 dependencies {
 
@@ -41,7 +44,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:15.0.2'
     implementation 'com.google.firebase:firebase-database:20.0.1'
 
-
+    implementation 'com.github.AppIntro:AppIntro:4.2.3'
 
 
     testImplementation 'junit:junit:4.+'

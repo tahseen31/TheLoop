@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent_get_started);
                 break; */
                 // Testing - Tahseen
-                startActivity(new Intent(this, RegisterUser.class));
+               // startActivity(new Intent(this, RegisterUser.class));
+                startActivity(new Intent(this, InitialAppInfoActivity.class));
                 break;
             case R.id.button_login:
                 Intent intent_login = new Intent(MainActivity.this, MainLoginActivity.class);
