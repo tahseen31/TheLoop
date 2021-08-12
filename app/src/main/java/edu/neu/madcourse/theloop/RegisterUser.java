@@ -13,12 +13,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterUser extends AppCompatActivity implements View.OnClickListener {
+
 
     private FirebaseAuth mAuth;
     private EditText fullName, age, userName, password;
@@ -28,6 +30,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
+
 
         mAuth = FirebaseAuth.getInstance();
         fullName = findViewById(R.id.name_register);

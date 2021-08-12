@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_get_started:
                 /*
                 Intent intent_get_started = new Intent(MainActivity.this, GetStartedScrollActivity.class);
+                Intent intent_get_started = new Intent(MainActivity.this, RegisterActivity.class);
+
                 startActivity(intent_get_started);
                 break; */
                 // Testing - Tahseen
