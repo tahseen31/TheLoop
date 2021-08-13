@@ -1,14 +1,16 @@
 package edu.neu.madcourse.theloop;
 
 public class User {
-    public String fullName, age, email;
+    public String fullName, age, email, id;
     public User(){
 
     }
-    public User(String fullName,String age, String email){
+    public User(String fullName,String age, String email, String id){
         this.fullName = fullName;
         this.age = age;
         this.email = email;
+        this.id = id;
+
     }
 
     public String getFullName() {
@@ -17,6 +19,14 @@ public class User {
 
     public String getAge() {
         return age;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getEmail() {
