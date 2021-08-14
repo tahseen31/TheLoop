@@ -18,6 +18,7 @@ public class SetGoalActivity extends AppCompatActivity {
     public static float mSeries = 0f;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
