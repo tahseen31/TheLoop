@@ -4,33 +4,25 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import android.content.Context;
+
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import edu.neu.madcourse.theloop.Fragments.ChatsFragment;
 import edu.neu.madcourse.theloop.Fragments.FriendsFragment;
-
-import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
 
 public class chatActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+        setContentView(R.layout.activity_chat_item);
 
         // Tab Layout instantiation
         TabLayout tabLayout = findViewById(R.id.tabLayout);

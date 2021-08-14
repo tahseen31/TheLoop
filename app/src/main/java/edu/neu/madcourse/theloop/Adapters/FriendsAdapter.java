@@ -1,6 +1,7 @@
 package edu.neu.madcourse.theloop.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import edu.neu.madcourse.theloop.MessageActivity;
 import edu.neu.madcourse.theloop.R;
 import edu.neu.madcourse.theloop.User;
 
@@ -41,6 +43,15 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
         // set Image
         holder.image.setImageResource(R.mipmap.ic_launcher);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, MessageActivity.class);
+                i.putExtra("userid", users.getId());
+                context.startActivity(i);
+            }
+        });
 
     }
 

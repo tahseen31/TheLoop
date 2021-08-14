@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFF00">
+
+    <TableLayout
+android:id="@+id/container"
+android:layout_width="match_parent"
+android:layout_height="515dp"
+android:padding="50dp"
+app:layout_behavior="@string/appbar_scrolling_view_behavior"
+tools:context=".MainActivityFragment">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Registration"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/username_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFF00"
+                android:hint="Email"
+                android:inputType="text"
+                android:paddingLeft="50dp"
+                android:paddingTop="20dp"
+                android:paddingRight="50dp"
+                android:paddingBottom="20dp"
+                android:textSize="18sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal">
+
+            <EditText
+                android:id="@+id/password_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFF00"
+                android:hint="Enter Password"
+                android:inputType="textPassword"
+                android:paddingLeft="50dp"
+                android:paddingTop="20dp"
+                android:paddingRight="50dp"
+                android:paddingBottom="20dp"
+                android:textSize="18sp" />
+        </TableRow>
+
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center_horizontal">
+
+    <EditText
+        android:id="@+id/name_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFF00"
+        android:hint="Name"
+        android:inputType="text"
+        android:paddingLeft="50dp"
+        android:paddingTop="20dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp"
+        android:textSize="18sp" />
+</TableRow>
+
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:gravity="center_horizontal">
+
+    <EditText
+        android:id="@+id/phoneInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFF00"
+        android:hint="Phone"
+        android:inputType="phone"
+        android:paddingLeft="50dp"
+        android:paddingTop="20dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp"
+        android:textSize="18sp" />
+</TableRow>
+
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:gravity="center_horizontal">
+
+    <RadioGroup
+        android:id="@+id/genderGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/maleRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:textColor="#A9A9A9" />
+
+        <RadioButton
+            android:id="@+id/femaleRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Female"
+            android:textColor="#A9A9A9" />
+    </RadioGroup>
+</TableRow>
+
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <EditText
+        android:id="@+id/age_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFF00"
+        android:hint="Enter Age"
+        android:inputType="number"
+        android:paddingLeft="50dp"
+        android:paddingTop="20dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp"
+        android:textSize="18sp" />
+
+</TableRow>
+
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+
+    <EditText
+        android:id="@+id/heightInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFF00"
+        android:hint="Enter Height"
+        android:inputType="phone"
+        android:paddingLeft="50dp"
+        android:paddingTop="20dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp"
+        android:textSize="18sp" />
+</TableRow>
+
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+
+    <EditText
+        android:id="@+id/weightInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#FFFF00"
+        android:hint="Enter Weight"
+        android:inputType="number"
+        android:paddingLeft="50dp"
+        android:paddingTop="20dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp"
+        android:textSize="18sp" />
+
+</TableRow>
+
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
+    <Button
+        android:id="@+id/nextbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#008000"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="50dp"
+        android:paddingTop="20dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="20dp" />
+</TableRow>
+
+
+
+
+
+
+</TableLayout>
+
+    </androidx.core.widget.NestedScrollView>
