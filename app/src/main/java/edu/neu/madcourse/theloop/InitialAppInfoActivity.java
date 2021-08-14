@@ -29,13 +29,13 @@ public class InitialAppInfoActivity extends AppIntro{
     @Override
     public void onSkipPressed() {
         // Do something when users tap on Skip button.
-        Intent i = new Intent(InitialAppInfoActivity.this, EnterPersonalDetailsActivity.class);
+        Intent i = new Intent(InitialAppInfoActivity.this, RegisterUser.class);
         startActivity(i);
     }
     @Override
     public void onDonePressed() {
         // Do something when users tap on Done button.
-        Intent i = new Intent(InitialAppInfoActivity.this, EnterPersonalDetailsActivity.class);
+        Intent i = new Intent(InitialAppInfoActivity.this, RegisterUser.class);
         startActivity(i);
         Toast.makeText(getApplicationContext(), "Finished", Toast.LENGTH_SHORT).show();
     }
