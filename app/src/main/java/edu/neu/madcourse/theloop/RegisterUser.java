@@ -151,7 +151,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                                         Toast.makeText(RegisterUser.this, "User has been successfully registered", Toast.LENGTH_LONG);
 
                                         // redirect user to log in
-                                        Intent intent_login = new Intent(RegisterUser.this, MainLoginActivity.class);
+                                        Intent intent_login = new Intent(RegisterUser.this, SetGoalActivity.class);
                                         startActivity(intent_login);
                                     } else{
                                         Toast.makeText(RegisterUser.this, "Faied to register, try again!", Toast.LENGTH_LONG);
@@ -167,6 +167,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                         } else {
                             Toast.makeText(RegisterUser.this, "Faied to register, try again!", Toast.LENGTH_LONG);
                         }
+
 
                     }
                 });
