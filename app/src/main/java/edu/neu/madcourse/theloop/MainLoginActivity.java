@@ -11,18 +11,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainLoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText usernameLogin, passwordLogin;
     Button loginNow;
+    public static float mSeries1 = 0f;
+    public static String USER_ID = "";
+    public static String USER_EMAIL = "";
+    public static String USER_NAME = "";
 
     // Firebase
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private DatabaseReference mDatabase =  FirebaseDatabase.getInstance().getReference();
 
 
     @Override
@@ -44,6 +56,44 @@ public class MainLoginActivity extends AppCompatActivity implements View.OnClick
                 
         }
 
+    }
+    private DatabaseReference getUsersRef(String ref) {
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userId = user.getUid();
+        return mDatabase.child("users").child(userId).child(ref);
+    }
+    private void getUserInfo() {
+        getUsersRef("fullName").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                USER_NAME = (String.valueOf(dataSnapshot.getValue()));
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        getUsersRef("stepGoal").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mSeries1 = Float.parseFloat(String.valueOf(dataSnapshot.getValue()));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        getUsersRef("email").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                USER_EMAIL = (String.valueOf(dataSnapshot.getValue()));
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void userLogin() {
@@ -77,7 +127,9 @@ public class MainLoginActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Intent intent_login = new Intent(MainLoginActivity.this, ProfileActivity.class);
+                    // m series
+                    getUserInfo();
+                    Intent intent_login = new Intent(MainLoginActivity.this, HomeScreen.class);
                     startActivity(intent_login);
 
                 } else {

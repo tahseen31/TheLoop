@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheLoop">
-        <activity android:name=".SetGoalActivity"></activity>
+        <activity android:name=".HomeScreen" android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
+        <activity android:name=".SetGoalActivity" />
         <activity android:name=".EnterPersonalDetailsActivity" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".InitialAppInfoActivity" />

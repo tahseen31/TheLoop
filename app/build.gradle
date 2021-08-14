@@ -40,6 +40,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'com.github.AppIntro:AppIntro:4.2.3'
 
+    implementation 'com.github.bmarrdev:android-DecoView-charting:v1.2'
+
     implementation 'com.google.firebase:firebase-auth:21.0.1'
     implementation 'com.google.firebase:firebase-messaging:15.0.2'
     implementation 'com.google.firebase:firebase-database:20.0.1'
