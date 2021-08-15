@@ -4,8 +4,8 @@
         <item
             android:id="@+id/item1"
             android:checked="false"
-            android:icon="@drawable/summary"
-            android:title="Summary"/>
+            android:icon="@drawable/appintro4"
+            android:title="Change Goal"/>
         <item
             android:id="@+id/item3"
             android:checked="false"
@@ -14,8 +14,8 @@
         <item
             android:id="@+id/item2"
             android:checked="false"
-            android:icon="@drawable/overview"
-            android:title="OverView" />
+            android:icon="@drawable/friends"
+            android:title="Chat Friends" />
         <item
             android:id="@+id/item4"
             android:checked="false"

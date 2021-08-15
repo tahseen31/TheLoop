@@ -37,7 +37,7 @@ public class SetGoalActivity extends AppCompatActivity {
                     return;
                 }
                 mDatabase.child("users").child(userId).child("stepGoal").setValue(stepGoal.getText().toString());
-                mDatabase.child("Users").child(userId).child("stepGoal").addListenerForSingleValueEvent(new ValueEventListener() {
+                mDatabase.child("users").child(userId).child("stepGoal").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         mSeries = Float.parseFloat(String.valueOf(dataSnapshot.getValue()));

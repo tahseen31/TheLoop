@@ -2,6 +2,7 @@ package edu.neu.madcourse.theloop;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -21,6 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +37,7 @@ import com.hookedonplay.decoviewlib.charts.SeriesItem;
 import com.hookedonplay.decoviewlib.events.DecoEvent;
 
 public class HomeScreen extends AppCompatActivity implements
-        SensorEventListener, NavigationView.OnNavigationItemSelectedListener {
+         NavigationView.OnNavigationItemSelectedListener {
 
     public static float evsteps;
     public static int cont = 0;
@@ -60,31 +62,131 @@ public class HomeScreen extends AppCompatActivity implements
     private int mSeries3Index;
     // Sensor data
     private TextView textView;
-    private SensorManager msensorManager;
-    private SensorManager sensorManager;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+    private TextView textActivity1;
+    private int numSteps;
+    Button BtnStart,BtnStop;
+    private StepDetector simpleStepDetector;
+    private SensorManager sensorManager;
+    private Sensor accel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_home_screen);
+        textActivity1 = findViewById(R.id.textActivity1);
+        textActivity1.setText( "steps: 0" );
+        // Get an instance of the SensorManager
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        accel = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        simpleStepDetector = new StepDetector();
+        simpleStepDetector.registerListener(new StepListener() {
+            @Override
+            public void step(long timeNs) {
+                numSteps++;
+                textActivity1.setText( "steps: " + numSteps);
+            }
+        });
+        BtnStart =  findViewById(R.id.start);
+        BtnStop =  findViewById(R.id.stop);
+        BtnStart.setOnClickListener(new View.OnClickListener() {
 
+
+
+            @Override
+            public void onClick(View arg0) {
+
+
+
+                numSteps = 0;
+                sensorManager.registerListener(new SensorEventListener() {
+                    @Override
+                    public void onSensorChanged(SensorEvent sensorEvent) {
+                        if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                            simpleStepDetector.updateAccel(
+                                    sensorEvent.timestamp, sensorEvent.values[0], sensorEvent.values[1], sensorEvent.values[2]);
+                        }
+                    }
+
+
+
+                    @Override
+                    public void onAccuracyChanged(Sensor sensor, int i) {
+
+
+
+                    }
+                }, accel, SensorManager.SENSOR_DELAY_FASTEST);
+
+
+
+            }
+        });
+
+
+
+
+        BtnStop.setOnClickListener(new View.OnClickListener() {
+
+
+
+            @Override
+            public void onClick(View arg0) {
+
+
+
+                sensorManager.unregisterListener(new SensorEventListener() {
+                    @Override
+                    public void onSensorChanged(SensorEvent sensorEvent) {
+                        if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                            textActivity1.setText( "steps: 0" );
+                            simpleStepDetector.updateAccel(
+                                    sensorEvent.timestamp, sensorEvent.values[0], sensorEvent.values[1], sensorEvent.values[2]);
+                            textActivity1.setText( "steps: 0" );
+                            numSteps = 0;
+                        }
+                    }
+
+
+
+                    @Override
+                    public void onAccuracyChanged(Sensor sensor, int i) {
+
+
+
+                    }
+                });
+
+
+
+            }
+        });
         Toolbar toolbar2 = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar2);
         navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
         View mHeaderView = navigationView.getHeaderView(0);
 
-        TextView nameId = mHeaderView.findViewById(R.id.textView6);
+        TextView nameId = mHeaderView.findViewById(R.id.txt1);
         nameId.setText(MainLoginActivity.USER_NAME);
-        TextView emailId = mHeaderView.findViewById(R.id.textView7);
+        Toast.makeText(HomeScreen.this, MainLoginActivity.USER_NAME, Toast.LENGTH_LONG).show();
+
+        PackageManager pm = getPackageManager();
+        if (pm.hasSystemFeature(PackageManager.FEATURE_SENSOR_STEP_COUNTER)) {
+            Toast.makeText(HomeScreen.this, "Step counter feature present", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(HomeScreen.this, "Step counter feature not present", Toast.LENGTH_LONG).show();
+        }
+        TextView emailId = mHeaderView.findViewById(R.id.txt2);
         emailId.setText(MainLoginActivity.USER_EMAIL);
         drawerLayout = findViewById(R.id.drawer);
         ActionBarDrawerToggle actionBarDrawerToggle =
-                new ActionBarDrawerToggle(this, drawerLayout, R.string.open_drawer, R.string.close_drawer) {
+                new ActionBarDrawerToggle(this, drawerLayout,toolbar2, R.string.open_drawer, R.string.close_drawer) {
                     @Override
                     public void onDrawerClosed(View drawerView) {
                         super.onDrawerClosed(drawerView);
@@ -109,7 +211,22 @@ public class HomeScreen extends AppCompatActivity implements
         final float[] m = new float[1];
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-
+        // Go to data image button
+        final ImageView dn = findViewById(R.id.datanext);
+        // Go to Chart Data page
+        dn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(HomeScreen.this,Activity_ViewPager.class);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation(HomeScreen.this, v, "testAnimation");
+                    HomeScreen.this.startActivity(intent1, options.toBundle());
+                } else {
+                    startActivity(intent1);
+                }
+            }
+        });
         mDecoView = findViewById(R.id.dynamicArcView);
 
 
@@ -123,44 +240,15 @@ public class HomeScreen extends AppCompatActivity implements
             // Setup events to be fired on a schedule
             createEvents();
         }
+
     }
 
     // Step Counter
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        activityRunning = true;
-        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if (countSensor != null) {
-            sensorManager.registerListener(this, countSensor, SensorManager.SENSOR_DELAY_UI);
-        } else {
-            Toast.makeText(this, "Count sensor not available!", Toast.LENGTH_LONG).show();
-        }
 
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        activityRunning = false;
-//         if you unregister the last listener, the hardware will stop detecting step events
-//        sensorManager.unregisterListener(this);
-    }
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        if (activityRunning) {
-            textView = (TextView) findViewById(R.id.textRemaining);
-            textView.setText(String.valueOf(event.values[0]));
-            evsteps = event.values[0];
-        }
 
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
 
     private void createBackSeries() {
         SeriesItem seriesItem = new SeriesItem.Builder(Color.parseColor("#FFE2E2E2"))
@@ -208,11 +296,12 @@ public class HomeScreen extends AppCompatActivity implements
             }
         });
 
-        final TextView textActivity1 = findViewById(R.id.textActivity1);
+       // final TextView textActivity1 = findViewById(R.id.textActivity1);
         seriesItem.addArcSeriesItemListener(new SeriesItem.SeriesItemListener() {
             @Override
             public void onSeriesItemAnimationProgress(float percentComplete, float currentPosition) {
-                textActivity1.setText(String.format("%.0f Steps", currentPosition));
+              //  Toast.makeText(HomeScreen.this, String.format("%.0f Steps", currentPosition), Toast.LENGTH_LONG).show();
+               // textActivity1.setText(String.format("%.0f Steps", currentPosition));
             }
 
             @Override
@@ -291,20 +380,20 @@ public class HomeScreen extends AppCompatActivity implements
         int id = item.getItemId();
 
         switch (id) {
-            //Set Daily Target
+            //Change Target
             case R.id.item1:
-                Intent intent = new Intent(this, HomeScreen.class);
+                Intent intent = new Intent(this, SetGoalActivity.class);
                 startActivity(intent);
                 break;
             //Chat with Friends
             case R.id.item2:
-                //intent = new Intent(this, OverviewActivity.class);
-                //startActivity(intent);
+                intent = new Intent(this, chatActivity.class);
+                startActivity(intent);
                 break;
             //Settings
             case R.id.item3:
-                //intent = new Intent(this, AccountActivity.class);
-                //startActivity(intent);
+                intent = new Intent(this, AccountActivity.class);
+                startActivity(intent);
                 break;
             //Logout
             case R.id.item4:

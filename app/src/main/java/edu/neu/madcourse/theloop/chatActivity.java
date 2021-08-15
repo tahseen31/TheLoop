@@ -34,7 +34,7 @@ public class chatActivity extends AppCompatActivity {
         viewPager2.setAdapter(viewPagerAdapter);
        //  tabLayout.setupWithViewPager((ViewPager) viewPager);
         new TabLayoutMediator(tabLayout, viewPager2,
-                (tab, position) -> tab.setText("OBJECT " + (position + 1))
+                (tab, position) -> tab.setText(fragment[position + 1])
         ).attach();
 
     }
@@ -76,4 +76,7 @@ public class chatActivity extends AppCompatActivity {
 
 
     }
+
+    private String[] fragment = { "NULL", "CHATS", "FRIENDS"};
+
     }

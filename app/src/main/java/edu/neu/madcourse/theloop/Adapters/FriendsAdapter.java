@@ -42,7 +42,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         holder.username.setText(users.getFullName());
 
         // set Image
-        holder.image.setImageResource(R.mipmap.ic_launcher);
+        holder.image.setImageResource(R.drawable.user);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
