@@ -34,7 +34,7 @@ public class MessageActivity extends AppCompatActivity {
      TextView username;
      ImageView imageView;
 
-     // RecyclerView recyclerView;
+      RecyclerView recyclerViewy;
      EditText msg_editText;
      ImageButton sendBtn;
 
@@ -46,6 +46,7 @@ public class MessageActivity extends AppCompatActivity {
      RecyclerView recyclerView;
      MessageAdapter messageAdapter;
      List<Chat> mchat;
+     String userid;
 
 
 
@@ -83,7 +84,7 @@ public class MessageActivity extends AppCompatActivity {
         //});
 
         intent = getIntent();
-        String userid = intent.getStringExtra("userid");
+        userid = intent.getStringExtra("userid");
 
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -126,6 +127,27 @@ public class MessageActivity extends AppCompatActivity {
         hashMap.put("receiver", receiver);
         hashMap.put("message", msg);
         reference.child("chats").push().setValue(hashMap);
+
+        // Adding User to chat fragment: Latest Chats with contacts
+        final DatabaseReference chatRef = FirebaseDatabase.getInstance()
+                .getReference("chatlist")
+                .child(fuser.getUid())
+                .child(userid);
+
+
+        chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()){
+                    chatRef.child("id").setValue(userid);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void readMessages(String myid, String userid){
@@ -139,7 +161,7 @@ public class MessageActivity extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Chat chat = snapshot.getValue(Chat.class);
 
-                    if((chat.getReceiver().equals(myid) && chat.getSender().equals(userid)) ||
+                    if(chat.getReceiver().equals(myid) && chat.getSender().equals(userid) ||
                     chat.getReceiver().equals(userid) && chat.getSender().equals(myid)) {
 
                         mchat.add(chat);

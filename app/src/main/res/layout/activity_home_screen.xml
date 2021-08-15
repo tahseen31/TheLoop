@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer"
     tools:context=".HomeScreen">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".HomeScreen"
@@ -18,14 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="5dp"
-            android:minHeight="?attr/actionBarSize"
-            />
+            android:minHeight="?attr/actionBarSize" />
+
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="384dp"
+            android:layout_height="426dp"
             android:layout_above="@+id/imageActivity1"
             android:layout_below="@+id/toolbar2"
-            >
+            android:layout_marginBottom="149dp">
+
             <TextView
                 android:id="@+id/textPercentage"
                 android:layout_width="wrap_content"
@@ -33,7 +33,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="40sp"/>
+                android:textSize="40sp" />
+
             <TextView
                 android:id="@+id/textRemaining"
                 android:layout_width="wrap_content"
@@ -41,14 +42,14 @@
                 android:layout_below="@+id/textPercentage"
                 android:layout_centerHorizontal="true"
                 android:maxWidth="200dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
             <com.hookedonplay.decoviewlib.DecoView
-                xmlns:custom="http://schemas.android.com/apk/res-auto"
-                custom:dv_lineWidth="22dp"
                 android:id="@+id/dynamicArcView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-            </com.hookedonplay.decoviewlib.DecoView>
+                android:layout_height="424dp"
+                app:dv_lineWidth="22dp"></com.hookedonplay.decoviewlib.DecoView>
+
         </RelativeLayout>
         <ImageView
             android:id="@+id/imageActivity1"
@@ -84,6 +85,29 @@
             android:layout_marginLeft="30dp"
             android:textSize="28dp"
             android:layout_alignParentBottom="true"/>
+
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="150dp"
+            android:layout_height="61dp"
+            android:layout_above="@+id/imageActivity1"
+
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="247dp"
+            android:layout_marginEnd="23dp"
+            android:layout_marginBottom="45dp"
+            android:text="Stop" />
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="175dp"
+            android:layout_height="62dp"
+            android:layout_above="@+id/imageActivity1"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="49dp"
+            android:layout_marginBottom="42dp"
+            android:text="Start" />
 
     </RelativeLayout>
     <com.google.android.material.navigation.NavigationView

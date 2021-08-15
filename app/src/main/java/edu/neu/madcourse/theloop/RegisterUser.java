@@ -140,7 +140,7 @@ public class RegisterUser extends AppCompatActivity implements View.OnClickListe
                         if(task.isSuccessful()){
                             FirebaseUser firebaseUser = mAuth.getCurrentUser();
                             String userid = firebaseUser.getUid();
-                            User user = new User(Fullname, Email, userid,Phone, Gender, Height, Age, 0, Weight );
+                            User user = new User(Fullname, Email, userid,Phone, Gender, Height, Age, "0", Weight );
                             Steps step = new Steps(0);
                             FirebaseDatabase.getInstance().getReference("users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

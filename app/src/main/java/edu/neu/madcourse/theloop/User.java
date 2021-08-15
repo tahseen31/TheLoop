@@ -1,12 +1,12 @@
 package edu.neu.madcourse.theloop;
 
 public class User {
-    public String fullName, email, id, phone, gender, height, age,weight;
-    public int stepGoal;
+    public String fullName, email, id, phone, gender, height, age,weight, stepGoal;
+   // public int stepGoal;
     public User(){
 
     }
-    public User(String fullName, String email, String id,String phone,String gender, String height,String age,int stepGoal, String weight){
+    public User(String fullName, String email, String id,String phone,String gender, String height,String age,String stepGoal, String weight){
         this.fullName = fullName;
         this.age = age;
         this.email = email;
@@ -60,11 +60,11 @@ public class User {
         this.height = height;
     }
 
-    public int getStepGoal() {
+    public String getStepGoal() {
         return stepGoal;
     }
 
-    public void setStepGoal(int stepGoal) {
+    public void setStepGoal(String stepGoal) {
         this.stepGoal = stepGoal;
     }
 
